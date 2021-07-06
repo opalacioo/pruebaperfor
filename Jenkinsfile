@@ -27,7 +27,7 @@ pipeline
                 script {
                     try{
                         echo 'Performance Guardar Build And JobName' 
-                     //   bat "C:\\apache-jmeter-5.3\\bin\\jmeter -n -t -JJOB_NAME=Baseline_${env.BUILD_NUMBER}"
+                     //   bat "D:\Datos_Leonardo\Choucair\apache-choucair\\bin\\jmeter -n -t -JJOB_NAME=Baseline_${env.BUILD_NUMBER}"
                         echo "Ejecutar Performance Test"
                         bat "bzt $WORKSPACE\\clima_cpt.yml $WORKSPACE\\passfail_config.yml"
                         perfReport './clima_cpt.xml'
