@@ -17,7 +17,7 @@ reporting:
 
 modules:
   jmeter:
-    path: D:\Datos_Leonardo\Choucair\apache-choucair
+    path: C:\apache-choucair
     
 settings:
   check-interval: 5s
