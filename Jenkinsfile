@@ -18,7 +18,7 @@ pipeline
                 echo 'Actualizar fuentes'
                 checkout([$class: 'GitSCM', branches: [[name: "master"]], 
                 doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [
-                [credentialsId: "oscarleo8989", url: "https://github.com/opalacioo/pruebaperfor.git"]
+                [credentialsId: "opalacio1", url: "https://github.com/opalacioo/pruebaperfor.git"]
                 ]])
             }
         }
@@ -59,7 +59,7 @@ def enviarCorreo(resultadoTest) {
     def nombreProyecto = "Baseline Orange"
 
     def NOMBRE_TRANSACCION = "Demostracion CPT" //Nombre del proyecto para asunto del correo
-    def NOMBRE_PROYECTO_GIT = "pruebaperfor" //Nombre del proyecto en GIT
+    def NOMBRE_PROYECTO_GIT = "democpt" //Nombre del proyecto en GIT
 
     if (resultadoTest == "SUCCESS") {
         asunto = "CPT - EJECUCION EXITOSA ESCENARIO - TRANSACCION ${NOMBRE_TRANSACCION}"
@@ -79,4 +79,3 @@ def enviarCorreo(resultadoTest) {
         to: "${recibe}"
     )
 }
-
