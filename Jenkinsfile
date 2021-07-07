@@ -18,7 +18,7 @@ pipeline
                 echo 'Actualizar fuentes'
                 checkout([$class: 'GitSCM', branches: [[name: "master"]], 
                 doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [
-                [credentialsId: "opalacio1", url: "https://github.com/opalacioo/pruebaperfor.git"]
+                [credentialsId: "opalacioo", url: "https://github.com/opalacioo/pruebaperfor.git"]
                 ]])
             }
         }
@@ -27,7 +27,7 @@ pipeline
                 script {
                     try{
                         echo 'Performance Guardar Build And JobName' 
-                        bat "C:\\apache-choucair\\bin\\jmeter -n -t -JJOB_NAME=Baseline_${env.BUILD_NUMBER}"
+                        bat "C:\\apache-jmeter-5.3\\bin\\jmeter -n -t -JJOB_NAME=Baseline_${env.BUILD_NUMBER}"
                         echo "Ejecutar Performance Test"
                         bat "bzt $WORKSPACE\\clima_cpt.yml $WORKSPACE\\passfail_config.yml"
                         perfReport './clima_cpt.xml'
@@ -59,7 +59,7 @@ def enviarCorreo(resultadoTest) {
     def nombreProyecto = "Baseline Orange"
 
     def NOMBRE_TRANSACCION = "Demostracion CPT" //Nombre del proyecto para asunto del correo
-    def NOMBRE_PROYECTO_GIT = "democpt" //Nombre del proyecto en GIT
+    def NOMBRE_PROYECTO_GIT = "pruebaperfor" //Nombre del proyecto en GIT
 
     if (resultadoTest == "SUCCESS") {
         asunto = "CPT - EJECUCION EXITOSA ESCENARIO - TRANSACCION ${NOMBRE_TRANSACCION}"
